@@ -1,10 +1,27 @@
 const express=require('express');
 const connectDB=require('./config/db');
 const cors=require('cors');
+const request=require('request');
 
 //Create the server
 const app = express();
-
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
+  
+app.get('/jokes/random', (req, res) => {
+    request(
+      { url: 'https://joke-api-strict-cors.appspot.com/jokes/random' },
+      (error, response, body) => {
+        if (error || response.statusCode !== 200) {
+          return res.status(500).json({ type: 'error', message: err.message });
+        }
+  
+        res.json(JSON.parse(body));
+      }
+    )
+});
 //Connect to the db
 connectDB();
 
