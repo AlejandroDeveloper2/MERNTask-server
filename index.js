@@ -28,5 +28,5 @@ app.use('/api/tasks', require('./routes/tasks'));
 
 //Run the app
 app.listen(port, '0.0.0.0', ()=>{
-    console.log(`The server works on ${PORT}`);
+    console.log(`The server works on ${port}`);
 })
