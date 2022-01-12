@@ -14,7 +14,7 @@ app.use(cors());
 //express.json
 app.use(express.json({extended: true}));
 // App port
-const PORT = process.env.PORT || 5000;
+const port = process.env.port || 5000;
 
 //Import routes
 app.use('/api/users', require('./routes/users'));
@@ -27,6 +27,6 @@ app.use('/api/tasks', require('./routes/tasks'));
 // })
 
 //Run the app
-app.listen(PORT, ()=>{
+app.listen(port, '0.0.0.0', ()=>{
     console.log(`The server works on ${PORT}`);
 })
